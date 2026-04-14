@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80ad46cd77cf68b4b93a05cbd362cc1c, type: 3}
+  m_Name: "\u0442\u0443\u0439\u043A\u0430"
+  m_EditorClassIdentifier: Assembly-CSharp::Plant
+  plantName: "\u0442\u0443\u0439\u043A\u0430"
+  cost: 100
+  plantPrefab: {fileID: 8763167437784040265, guid: 1009b2e9f6ef03841a674ee000448895, type: 3}
+  icon: {fileID: 8889397492801303465, guid: 9101f8752729a8e42bc9c02639522e41, type: 3}
+  cooldown: 10
+  producesLeaves: 0
+  leavesAmount: 1
+  produceInterval: 5
+  LeafPrefab: {fileID: 0}
+  shoot: 1
+  bulletPrefab: {fileID: 4934402938894100935, guid: c6b954d63e4ac134195f6cf8d43b4f1b, type: 3}
+  shootDelay: 0.8
+  range: 10
+  maxHealth: 60
