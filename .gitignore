@@ -5,3 +5,5 @@ Library/
 Temp/
 Logs/
 Obj/
+UserSettings/
+*.sln
