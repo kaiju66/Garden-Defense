@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 [System.Serializable]
 public class ZombieType
@@ -7,20 +8,32 @@ public class ZombieType
     public float spawnChance;
 }
 
-public class ZombieSpawner : MonoBehaviour
+[System.Serializable]
+public class Wave
 {
     public ZombieType[] zombies;
+
+    public int zombieCount = 20;
+    public float spawnRate = 2f;
+}
+
+public class ZombieSpawner : MonoBehaviour
+{
+    public Wave[] waves;
 
     public int rows = 7;
     public float cellHeight = 1f;
     public float spawnX = 12f;
 
-    public float spawnRate = 2f;
+    public float startDelay = 8f;
+    public float breakTime = 5f;
 
-    public int startWaveSize = 20;
-    public float breakTime = 8f;
+    [Header("UI")]
+    public TextMeshProUGUI waveText;
+    public float waveTextDuration = 2f;
 
-    private int currentWave = 1;
+    private int currentWaveIndex = 0;
+
     private int zombiesToSpawn;
     private int zombiesAlive;
 
@@ -29,7 +42,7 @@ public class ZombieSpawner : MonoBehaviour
 
     void Start()
     {
-        StartWave();
+        Invoke(nameof(StartWave), startDelay);
     }
 
     void Update()
@@ -38,13 +51,14 @@ public class ZombieSpawner : MonoBehaviour
 
         timer += Time.deltaTime;
 
-        if (timer >= spawnRate && zombiesToSpawn > 0)
+        Wave currentWave = waves[currentWaveIndex];
+
+        if (timer >= currentWave.spawnRate && zombiesToSpawn > 0)
         {
-            SpawnZombie();
+            SpawnZombie(currentWave);
             timer = 0f;
         }
 
-        // якщо всі зомбі закінчились
         if (zombiesAlive <= 0 && zombiesToSpawn <= 0)
         {
             EndWave();
@@ -53,39 +67,53 @@ public class ZombieSpawner : MonoBehaviour
 
     void StartWave()
     {
-        isWaveActive = true;
+        if (currentWaveIndex >= waves.Length)
+        {
+            Debug.Log("ВСІ ХВИЛІ ЗАВЕРШЕНО!");
+            return;
+        }
 
-        zombiesToSpawn = startWaveSize + (currentWave * 5);
+        Wave wave = waves[currentWaveIndex];
+
+        zombiesToSpawn = wave.zombieCount;
         zombiesAlive = 0;
 
-        Debug.Log("Хвиля " + currentWave + " почалась!");
+        ShowWaveText(currentWaveIndex + 1);
+
+        Invoke(nameof(ActivateWave), waveTextDuration);
+    }
+
+    void ActivateWave()
+    {
+        isWaveActive = true;
+        Debug.Log("Хвиля " + (currentWaveIndex + 1) + " почалась!");
     }
 
     void EndWave()
     {
         isWaveActive = false;
 
-        Debug.Log("Хвиля закінчена!");
+        Debug.Log("Хвиля завершена!");
 
         Invoke(nameof(NextWave), breakTime);
     }
 
     void NextWave()
     {
-        currentWave++;
+        currentWaveIndex++;
         StartWave();
     }
 
-    void SpawnZombie()
+    void SpawnZombie(Wave wave)
     {
         int randomRow = Random.Range(0, rows);
         float yPos = randomRow * cellHeight;
 
         Vector3 spawnPos = new Vector3(spawnX, yPos, 0);
 
-        GameObject zombiePrefab = GetRandomZombie();
+        GameObject prefab = GetRandomZombie(wave);
 
-        GameObject zombie = Instantiate(zombiePrefab, spawnPos, Quaternion.identity);
+        GameObject zombie = Instantiate(prefab, spawnPos, Quaternion.identity);
 
         zombiesToSpawn--;
         zombiesAlive++;
@@ -98,16 +126,16 @@ public class ZombieSpawner : MonoBehaviour
         zombiesAlive--;
     }
 
-    GameObject GetRandomZombie()
+    GameObject GetRandomZombie(Wave wave)
     {
         float total = 0;
 
-        foreach (var z in zombies)
+        foreach (var z in wave.zombies)
             total += z.spawnChance;
 
         float rand = Random.Range(0, total);
 
-        foreach (var z in zombies)
+        foreach (var z in wave.zombies)
         {
             if (rand < z.spawnChance)
                 return z.prefab;
@@ -115,6 +143,24 @@ public class ZombieSpawner : MonoBehaviour
             rand -= z.spawnChance;
         }
 
-        return zombies[0].prefab;
+        return wave.zombies[0].prefab;
+    }
+
+    void ShowWaveText(int waveNumber)
+    {
+        if (waveText == null) return;
+
+        waveText.gameObject.SetActive(true);
+        waveText.text = "Хвиля " + waveNumber;
+
+        CancelInvoke(nameof(HideWaveText));
+        Invoke(nameof(HideWaveText), waveTextDuration);
+    }
+
+    void HideWaveText()
+    {
+        if (waveText == null) return;
+
+        waveText.gameObject.SetActive(false);
     }
 }
