@@ -5,7 +5,7 @@ public class MainMenu : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene("Game");
+        FindFirstObjectByType<SceneTransition>().LoadScene("Game");
     }
 
     public void QuitGame()

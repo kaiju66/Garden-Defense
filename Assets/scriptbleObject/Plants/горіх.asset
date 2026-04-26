@@ -15,7 +15,7 @@ MonoBehaviour:
   plantName: "\u0433\u043E\u0440\u0456\u0445"
   cost: 75
   plantPrefab: {fileID: 2605016044506802515, guid: 795ad5f40c0988a4fbda493260947cc0, type: 3}
-  icon: {fileID: 0}
+  icon: {fileID: 8024170800127884669, guid: 808d58bdacbaf6642b607b59f2d6b476, type: 3}
   cooldown: 8
   producesLeaves: 0
   leavesAmount: 1
