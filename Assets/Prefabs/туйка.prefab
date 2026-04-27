@@ -41,10 +41,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5972442242755625421}
   - component: {fileID: 90892633691228212}
+  - component: {fileID: -6249800047249309096}
   - component: {fileID: 5473890871373895214}
   - component: {fileID: 7408246399449773803}
   - component: {fileID: -6952120959493009660}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: "\u0442\u0443\u0439\u043A\u0430"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,6 +127,19 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &-6249800047249309096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8763167437784040265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f79d301bf56979a4692f9dec8416d439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlantBehaviour
+  data: {fileID: 11400000, guid: 1c9dd8299ae61eb41a4e43e199a2419a, type: 2}
 --- !u!61 &5473890871373895214
 BoxCollider2D:
   m_ObjectHideFlags: 0
