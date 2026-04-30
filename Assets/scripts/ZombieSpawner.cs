@@ -24,6 +24,7 @@ public class ZombieSpawner : MonoBehaviour
     public int rows = 7;
     public float cellHeight = 1f;
     public float spawnX = 12f;
+    public float startY = 0f;
 
     public float startDelay = 8f;
     public float breakTime = 5f;
@@ -107,7 +108,7 @@ public class ZombieSpawner : MonoBehaviour
     void SpawnZombie(Wave wave)
     {
         int randomRow = Random.Range(0, rows);
-        float yPos = randomRow * cellHeight;
+        float yPos = startY + (randomRow - rows / 2f) * cellHeight;
 
         Vector3 spawnPos = new Vector3(spawnX, yPos, 0);
 
@@ -162,5 +163,20 @@ public class ZombieSpawner : MonoBehaviour
         if (waveText == null) return;
 
         waveText.gameObject.SetActive(false);
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+
+        for (int i = 0; i < rows; i++)
+        {
+            float yPos = startY + (i - rows / 2f) * cellHeight;
+
+            Vector3 start = new Vector3(spawnX - 1f, yPos, 0);
+            Vector3 end = new Vector3(spawnX + 1f, yPos, 0);
+
+            Gizmos.DrawLine(start, end);
+        }
     }
 }

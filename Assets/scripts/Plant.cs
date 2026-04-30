@@ -17,7 +17,7 @@ public class Plant : ScriptableObject
     
      [Header("стрільба")] 
     public bool shoot;
-    public GameObject bulletPrefab;
+    public GameObject[] bulletPrefab;
     public float shootDelay;
     public float range;
     

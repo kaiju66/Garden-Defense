@@ -22,7 +22,8 @@ MonoBehaviour:
   produceInterval: 5
   LeafPrefab: {fileID: 0}
   shoot: 1
-  bulletPrefab: {fileID: 4934402938894100935, guid: c6b954d63e4ac134195f6cf8d43b4f1b, type: 3}
+  bulletPrefab:
+  - {fileID: 4934402938894100935, guid: c6b954d63e4ac134195f6cf8d43b4f1b, type: 3}
   shootDelay: 0.8
   range: 10
   maxHealth: 60

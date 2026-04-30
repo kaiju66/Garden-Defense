@@ -6,6 +6,9 @@ public class Zombie : MonoBehaviour
     public float speed = 1f;
     public float startMoveDelay = 0f;
     private bool canMove = false;
+    float originalSpeed;
+    bool isSlowed = false;
+    bool isFreezed = false;
 
     [Header("Health")]
     public int maxHealth = 100;
@@ -37,6 +40,8 @@ public class Zombie : MonoBehaviour
         playerHealth = FindAnyObjectByType<PlayerHealth>();
 
         Invoke(nameof(EnableMovement), startMoveDelay);
+
+        originalSpeed = speed;
     }
 
     void Update()
@@ -166,6 +171,60 @@ public class Zombie : MonoBehaviour
         {
             isAttacking = false;
             targetPlant = null;
+        }
+    }
+
+    public void Slow()
+    {
+        CancelInvoke("Unslowed");
+
+        if (!isSlowed)
+        {
+            speed = originalSpeed * 0.5f;
+            isSlowed = true;
+        }
+        Invoke("Unslowed", 1.5f);
+    }
+
+    public void Freeze()
+    {
+        CancelInvoke("Unfreezed");
+
+        if(!isFreezed)
+        {
+            speed = originalSpeed * 0f;
+            isFreezed = true;
+        }
+        Invoke("Unfreezed", 1.5f);
+    }
+
+    void Unslowed()
+    {
+        isSlowed = false;
+
+        if(isFreezed)
+        {
+            speed = 0f;
+        }
+        else
+        {
+        speed = originalSpeed;
+        
+        }
+    }
+
+    void Unfreezed()
+    {
+        isFreezed = false;
+        
+        if (isSlowed)
+        {
+            speed = originalSpeed * 0.5f;
+        }
+        else
+        {
+            speed = originalSpeed;
+            
         }
     }
 }
