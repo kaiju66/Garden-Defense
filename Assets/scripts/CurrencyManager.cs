@@ -23,6 +23,7 @@ public class CurrencyManager : MonoBehaviour
     void Start()
     {
         AddLeaves(200);
+        Invoke("TimerLeaves", 15f);
     }
 
     public void AddLeaves(int amount)
@@ -39,5 +40,10 @@ public class CurrencyManager : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void TimerLeaves()
+    {
+        AddLeaves(25);
     }
 }

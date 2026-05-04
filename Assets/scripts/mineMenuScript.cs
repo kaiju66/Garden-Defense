@@ -3,9 +3,13 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject chooseGame;
+    public GameObject settingP;
+
     public void StartGame()
     {
-        FindFirstObjectByType<SceneTransition>().LoadScene("Game");
+        chooseGame.SetActive(true);
+        settingP.SetActive(false);
     }
 
     public void QuitGame()
@@ -16,6 +20,6 @@ public class MainMenu : MonoBehaviour
 
     public void OpenSettings()
     {
-        Debug.Log("Settings clicked");
+       settingP.SetActive(!settingP.activeSelf);
     }
 }

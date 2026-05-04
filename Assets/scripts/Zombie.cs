@@ -35,6 +35,8 @@ public class Zombie : MonoBehaviour
 
     void Start()
     {
+        DifficultyStat();
+
         currentHealth = maxHealth;
 
         playerHealth = FindAnyObjectByType<PlayerHealth>();
@@ -183,7 +185,7 @@ public class Zombie : MonoBehaviour
             speed = originalSpeed * 0.5f;
             isSlowed = true;
         }
-        Invoke("Unslowed", 1.5f);
+        Invoke("Unslowed", 2.5f);
     }
 
     public void Freeze()
@@ -195,7 +197,7 @@ public class Zombie : MonoBehaviour
             speed = originalSpeed * 0f;
             isFreezed = true;
         }
-        Invoke("Unfreezed", 1.5f);
+        Invoke("Unfreezed", 2.5f);
     }
 
     void Unslowed()
@@ -226,5 +228,13 @@ public class Zombie : MonoBehaviour
             speed = originalSpeed;
             
         }
+    }
+
+    public void DifficultyStat()
+    {
+        speed = (speed * GameSetting.difficulty);
+        maxHealth = (int)(maxHealth * GameSetting.difficulty);
+        damage = (int)(damage * GameSetting.difficulty);
+        armorHealth = (int)(armorHealth * GameSetting.difficulty);
     }
 }

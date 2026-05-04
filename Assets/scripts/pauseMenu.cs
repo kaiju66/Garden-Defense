@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenuUI;
+    public GameObject settingP;
 
     private bool isPaused = false;
 
@@ -35,8 +36,10 @@ public class PauseMenu : MonoBehaviour
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
+        settingP.SetActive(false);
         Time.timeScale = 1f; // ▶️ ПРОДОВЖУЄМО ГРУ
         isPaused = false;
+        
     }
 
     public void Restart()
@@ -49,10 +52,19 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f; // обов’язково!
         FindFirstObjectByType<SceneTransition>().LoadScene("menuGame");
+        
     }
 
     public void OpenSettings()
     {
-        Debug.Log("Тут будуть настройки");
+      settingP.SetActive(!settingP.activeSelf);
+    }
+
+    public void CloseP()
+    {
+        if (settingP.activeSelf)
+        {
+            settingP.SetActive(false);
+        }
     }
 }
