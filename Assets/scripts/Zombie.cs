@@ -58,12 +58,6 @@ public class Zombie : MonoBehaviour
         {
             Move();
         }
-
-        // дійшов до кінця
-        if (transform.position.x < destroyX)
-        {
-            ReachEnd();
-        }
     }
 
     void EnableMovement()
@@ -101,7 +95,7 @@ public class Zombie : MonoBehaviour
         {
             finalDamage = Mathf.Max(dmg - armorReduction, 1);
 
-            armorHealth -= dmg;
+            armorHealth -= finalDamage;
 
             if (armorHealth <= 0)
             {
@@ -143,6 +137,9 @@ public class Zombie : MonoBehaviour
 
     void ReachEnd()
     {
+        isAttacking = false;
+        targetPlant = null;
+
         if (playerHealth != null)
         {
             playerHealth.TakeDamage(1);
@@ -164,6 +161,11 @@ public class Zombie : MonoBehaviour
         {
             isAttacking = true;
             targetPlant = plant;
+        }
+
+        if(other.CompareTag("Base"))
+        {
+            ReachEnd();
         }
     }
 
@@ -232,7 +234,7 @@ public class Zombie : MonoBehaviour
 
     public void DifficultyStat()
     {
-        speed = (speed * GameSetting.difficulty);
+        speed *= GameSetting.difficulty;
         maxHealth = (int)(maxHealth * GameSetting.difficulty);
         damage = (int)(damage * GameSetting.difficulty);
         armorHealth = (int)(armorHealth * GameSetting.difficulty);

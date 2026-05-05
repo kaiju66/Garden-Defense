@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        chooseGame.SetActive(true);
+        FindFirstObjectByType<SceneTransition>().LoadScene("AdvancedGame");
         settingP.SetActive(false);
     }
 
