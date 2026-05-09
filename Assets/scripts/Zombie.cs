@@ -7,8 +7,13 @@ public class Zombie : MonoBehaviour
     public float startMoveDelay = 0f;
     private bool canMove = false;
     float originalSpeed;
+
     bool isSlowed = false;
     bool isFreezed = false;
+    bool isFired = false;
+    float fireDelay = 1f;
+    private float timer;
+    public int fireDamage = 4;
 
     [Header("Health")]
     public int maxHealth = 100;
@@ -57,6 +62,16 @@ public class Zombie : MonoBehaviour
         else
         {
             Move();
+        }
+        
+        if(isFired)
+        {
+            timer += Time.deltaTime;
+            if(timer >= fireDelay)
+            {
+                TakeDamage(fireDamage);
+                timer = 0f;
+            }
         }
     }
 
@@ -238,5 +253,17 @@ public class Zombie : MonoBehaviour
         maxHealth = (int)(maxHealth * GameSetting.difficulty);
         damage = (int)(damage * GameSetting.difficulty);
         armorHealth = (int)(armorHealth * GameSetting.difficulty);
+    }
+
+    void Fire()
+    {
+        ancelInvoke(UnFire);
+        isFired = true;
+        Invoke("UnFire", 3f)
+    }
+
+    void UnFire()
+    {
+        isFired = false
     }
 }
