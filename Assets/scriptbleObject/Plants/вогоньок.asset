@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80ad46cd77cf68b4b93a05cbd362cc1c, type: 3}
-  m_Name: "\u0433\u043E\u0440\u0456\u0445"
+  m_Name: "\u0432\u043E\u0433\u043E\u043D\u044C\u043E\u043A"
   m_EditorClassIdentifier: Assembly-CSharp::Plant
-  plantName: "\u0433\u043E\u0440\u0456\u0445"
-  cost: 75
-  plantPrefab: {fileID: 2605016044506802515, guid: 795ad5f40c0988a4fbda493260947cc0, type: 3}
-  icon: {fileID: 8024170800127884669, guid: 808d58bdacbaf6642b607b59f2d6b476, type: 3}
-  cooldown: 8
+  plantName: "\u0432\u043E\u0433\u043E\u043D\u044C\u043E\u043A"
+  cost: 150
+  plantPrefab: {fileID: 970542306146142851, guid: 8ee0b03fcd63b704b8f9b6e9a00cc8ad, type: 3}
+  icon: {fileID: 0}
+  cooldown: 5
   producesLeaves: 0
   leavesAmount: 1
   produceInterval: 5
   LeafPrefab: {fileID: 0}
-  shoot: 0
+  shoot: 1
   bulletPrefab:
-  - {fileID: 0}
-  shootDelay: 3
-  range: 4
-  maxHealth: 160
+  - {fileID: 1606427235004888531, guid: 28fffd58e0b4770488988030a39b01a7, type: 3}
+  shootDelay: 2
+  range: 8
+  maxHealth: 100

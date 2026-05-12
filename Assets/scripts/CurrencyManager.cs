@@ -5,18 +5,9 @@ public class CurrencyManager : MonoBehaviour
     public static CurrencyManager Instance;
 
     public int LeafBalance { get; private set; } = 0;
-
-    private void Awake()
+    void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        Instance = this;
     }
 
    

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2419405120184686991
+--- !u!1 &1606427235004888531
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,54 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4080776225223872409}
-  - component: {fileID: 1899487548546098681}
-  - component: {fileID: -1165368599886545262}
-  - component: {fileID: 8104610817327625264}
+  - component: {fileID: 2826682960025510852}
+  - component: {fileID: -7261328048554488429}
+  - component: {fileID: 3716606593996842381}
+  - component: {fileID: 5655015996719205590}
   m_Layer: 0
-  m_Name: FPiceBullet
+  m_Name: "\u0432\u043E\u0433\u043D\u044F\u043D\u0430\u043F\u0443\u043B\u044F"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4080776225223872409
+--- !u!4 &2826682960025510852
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2419405120184686991}
+  m_GameObject: {fileID: 1606427235004888531}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.59635, y: -5.52855, z: 0}
+  m_LocalPosition: {x: 1.32585, y: -3.53545, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1899487548546098681
+--- !u!114 &-7261328048554488429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606427235004888531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d8639816f11f9c4ca16e76fc350f001, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::fireBullet
+  damage: 30
+  speed: 5
+--- !u!212 &3716606593996842381
 SpriteRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2419405120184686991}
+  m_GameObject: {fileID: 1606427235004888531}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -93,27 +107,13 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &-1165368599886545262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2419405120184686991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a90380baceeccc489fd155361b46f3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FPiceBullet
-  speed: 2
-  damage: 10
---- !u!58 &8104610817327625264
+--- !u!58 &5655015996719205590
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2419405120184686991}
+  m_GameObject: {fileID: 1606427235004888531}
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
@@ -141,5 +141,5 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.013464451}
-  m_Radius: 0.3829646
+  m_Offset: {x: 0, y: -0.008520484}
+  m_Radius: 0.32836974

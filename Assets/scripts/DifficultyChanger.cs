@@ -11,13 +11,13 @@ public class DifficultyChanger : MonoBehaviour
     public void Hard()
     {
         GameSetting.difficulty = 1.25f;
-        Debug.Log("Difficalty Normal");
+        Debug.Log("Difficalty Hard");
     }
     
     public void Normal()
     {
         GameSetting.difficulty = 1f;
-        Debug.Log("Difficalty Hard");
+        Debug.Log("Difficalty Normal");
     }
 
     public void Imposible()

@@ -37,6 +37,9 @@ public class Zombie : MonoBehaviour
 
     private PlayerHealth playerHealth;
     public ZombieSpawner spawner;
+    public GameObject iceCube;
+    private SpriteRenderer sr;
+    
 
     void Start()
     {
@@ -49,6 +52,8 @@ public class Zombie : MonoBehaviour
         Invoke(nameof(EnableMovement), startMoveDelay);
 
         originalSpeed = speed;
+        iceCube.SetActive(false);
+        sr = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -201,6 +206,7 @@ public class Zombie : MonoBehaviour
         {
             speed = originalSpeed * 0.5f;
             isSlowed = true;
+            UpdateColor();
         }
         Invoke("Unslowed", 2.5f);
     }
@@ -213,6 +219,7 @@ public class Zombie : MonoBehaviour
         {
             speed = originalSpeed * 0f;
             isFreezed = true;
+            iceCube.SetActive(true);
         }
         Invoke("Unfreezed", 2.5f);
     }
@@ -228,6 +235,7 @@ public class Zombie : MonoBehaviour
         else
         {
         speed = originalSpeed;
+        UpdateColor();
         
         }
     }
@@ -235,6 +243,7 @@ public class Zombie : MonoBehaviour
     void Unfreezed()
     {
         isFreezed = false;
+        iceCube.SetActive(false);
         
         if (isSlowed)
         {
@@ -255,15 +264,33 @@ public class Zombie : MonoBehaviour
         armorHealth = (int)(armorHealth * GameSetting.difficulty);
     }
 
-    void Fire()
+    public void Fire()
     {
-        ancelInvoke(UnFire);
+        CancelInvoke("UnFire");
         isFired = true;
-        Invoke("UnFire", 3f)
+        UpdateColor();
+        Invoke("UnFire", 3f);
     }
 
     void UnFire()
     {
-        isFired = false
+        isFired = false;
+        UpdateColor();
     }
+
+    void UpdateColor()
+{
+     if (isSlowed)
+    {
+        sr.color = Color.blue;
+    }
+    else if (isFired)
+    {
+        sr.color = Color.red;
+    }
+    else
+    {
+        sr.color = Color.white;
+    }
+}
 }

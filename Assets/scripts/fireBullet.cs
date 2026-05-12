@@ -17,9 +17,9 @@ public class fireBullet : MonoBehaviour
             Zombie z = other.GetComponent<Zombie>();
 
             z.TakeDamage(damage);
-            z.fire();
+            z.Fire();
 
-            Destroy(GameObject);
+            Destroy(gameObject);
         }
     }
 
@@ -30,6 +30,6 @@ public class fireBullet : MonoBehaviour
 
     void DestroyBullet()
     {
-        Destroy(GameObject);
+        Destroy(gameObject);
     }
 }
