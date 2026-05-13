@@ -6,7 +6,6 @@ public class Plant : ScriptableObject
     public string plantName;        // Назва рослини
     public int cost;                // Ціна посадки
     public GameObject plantPrefab;  // Префаб рослини
-    public Sprite icon;
     public float cooldown = 5f;
 
      [Header("Листя")] 

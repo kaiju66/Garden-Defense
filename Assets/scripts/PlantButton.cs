@@ -27,7 +27,7 @@ public class PlantButton : MonoBehaviour
 
     void Start()
     {
-        icon.sprite = plant.icon;
+        
         costText.text = plant.cost.ToString();
 
         if (cooldownOverlay != null)

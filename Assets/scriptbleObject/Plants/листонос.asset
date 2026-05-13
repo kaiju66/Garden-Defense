@@ -15,13 +15,14 @@ MonoBehaviour:
   plantName: "\u043B\u0438\u0441\u0442\u043E\u043D\u043E\u0441"
   cost: 50
   plantPrefab: {fileID: 5217209490023524082, guid: 3795f047ae5990648968dc0500fb3ecb, type: 3}
-  icon: {fileID: -6973119888558843981, guid: f1252b49e56c3764f8d4fe57d5e73e0a, type: 3}
+  cooldown: 5
   producesLeaves: 1
   leavesAmount: 25
   produceInterval: 10
   LeafPrefab: {fileID: 8025755967345601877, guid: 22d30b240e528b94ab7524ff655995a8, type: 3}
   shoot: 0
-  bulletPrefab: {fileID: 0}
+  bulletPrefab:
+  - {fileID: 0}
   shootDelay: 0
   range: 0
   maxHealth: 50
